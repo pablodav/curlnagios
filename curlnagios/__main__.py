@@ -59,7 +59,7 @@ def cli_execution(options):
         return retrcode, retroutput, retrdict
     
     def format_message():
-        return 'Information: {} '.format(options.site_url)
+        return 'url: {} '.format(options.url)
 
     def check(retrcode):
         if retrcode >= 2:
@@ -69,18 +69,18 @@ def cli_execution(options):
             status = WARNING
             message['summary'] = 'WARNING: '
         else:
-            retrcode = OK
+            status = OK
             message['summary'] = 'OK: '
         return status
 
     # Check logic starts here
     data = collect_data()
-    message['status'] = check(data)
+    message['status'] = check(data[0])
     # Add summary
     message['summary'] += format_message()
     # Add perfdata
     # total = len(data)
-    # message['perfdata'] = "alerts={};1;2;0; ".format(total)
+    message['perfdata'] = curlnagiosobj.format_perfdata()
 
     # Print the message
     print("{summary}|{perfdata}".format(
