@@ -43,9 +43,9 @@ class curlCheck:
     def format_perfdata(self):
 
         perfdata = ''
-        retrcode, retroutput, jsonoutput = self.collect_data()
+        returntuple = self.collect_data()
 
-        for k, v in jsonoutput.items():
+        for k, v in returntuple[2].items():
             # Simple format once we implement  warn;crit;min;max
             # 'label'=value[UOM];[warn];[crit];[min];[max] 
             perfdata += '{}={};;;; '.format(k, v)
