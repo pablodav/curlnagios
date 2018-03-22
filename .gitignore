@@ -1,0 +1,89 @@
+# Compiled python modules.
+*.pyc
+
+# sphinx build folder
+_build
+_static
+_templates
+
+# Setuptools distribution folder.
+/dist/
+/build/
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+
+# Pycharm dir
+.idea
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Eric6 files
+.e4p
+
+# Coverage
+.cache
+.coverage*
+coverage.xml
+
+.kdev4/
+__pycache__/
+burp_reports/__pycache__/
+burp_reports/backends/__pycache__/
+burp_reports/defaults/__pycache__/
+burp_reports/dummy/__pycache__/
+burp_reports/interfaces/__pycache__/
+burp_reports/lib/__pycache__/
+burp_reports/reports/__pycache__/
+burp_reports/tests/__pycache__/
+test1.txt
+
+.tox
+test_write_config.conf
+
+# tests
+inventory_email.csv
+
+# vscode
+.vscode
