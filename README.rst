@@ -56,6 +56,34 @@ All the extra_args are options directly comming from curl manpage, you can use a
 with exception of -s, -o, -w as these are
 implicit added on the curl command line argument to format the output for this plugin.
 
+Nagios config
+=============
+
+Example command
+---------------
+
+```
+define command{
+  	command_name  check_http_curl
+  	command_line  curlnagios --url='$ARG1$' --extra_args='$ARG2$'
+}
+```
+
+Example service
+---------------
+
+```
+define service {
+        host_name                       SERVERX
+        service_description             service_name
+        check_command                   check_http_curl!http://url/path!--proxy http://user:name@host:8080 --user user:name --ntlm
+    	use				                generic-service
+        notes                           some useful notes
+}
+```
+
+You can use ansible role that already has the installation and command: https://github.com/CoffeeITWorks/ansible_nagios4_server_plugins
+
 TODO
 ====
 
