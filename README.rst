@@ -65,7 +65,7 @@ Example command
 ```
 define command{
   	command_name  check_http_curl
-  	command_line  curlnagios --url='$ARG1$' --extra_args='$ARG2$'
+  	command_line  /usr/local/bin/curlnagios --url='$ARG1$' --extra_args='$ARG2$'
 }
 ```
 
