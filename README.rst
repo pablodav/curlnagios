@@ -38,7 +38,7 @@ Use the command line::
         -u [URL], --url [URL]
                                 url to check 
         -e [EXTRA_ARGS], --extra_args [EXTRA_ARGS]
-                                extra args to add to curl, see curl manpage  
+                                extra args to add to curl, see `curl manpage <https://curl.haxx.se/docs/manpage.html>`_.
 
 
 Example usage
