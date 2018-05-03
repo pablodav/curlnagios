@@ -59,28 +59,35 @@ implicit added on the curl command line argument to format the output for this p
 Nagios config
 =============
 
-Example command
----------------
+Example command::
 
-```
-define command{
-  	command_name  check_http_curl
-  	command_line  /usr/local/bin/curlnagios --url='$ARG1$' --extra_args='$ARG2$'
-}
-```
+    define command{
+        command_name  check_http_curl
+        command_line  /usr/local/bin/curlnagios --url='$ARG1$' --extra_args='$ARG2$'
+    }
 
-Example service
----------------
 
-```
-define service {
-        host_name                       SERVERX
-        service_description             service_name
-        check_command                   check_http_curl!http://url/path!--proxy http://user:name@host:8080 --user user:name --ntlm
-    	use				                generic-service
-        notes                           some useful notes
-}
-```
+Example service::
+
+    define service {
+            host_name                       SERVERX
+            service_description             service_name
+            check_command                   check_http_curl!http://url/path!--proxy http://user:name@host:8080 --user user:name --ntlm
+            use				                generic-service
+            notes                           some useful notes
+    }
+
+Example service bypassing reverse proxy and dns and proxy server::
+
+    define service {
+            host_name                       SERVERY
+            service_description             fqdn.backend1
+            check_command                   check_http_curl!http://192.168.10.10:80!--noproxy "192.168.10.10" -H "Host: fqdn.site.name"
+            use				                generic-service
+            notes                           Monitoring backend1 de of site fqdn.site.name
+    }
+
+     ## In this way you can connect to some backend and pass with -H the host header to get and also ensure no proxy used to connect to url.
 
 You can use ansible role that already has the installation and command: https://github.com/CoffeeITWorks/ansible_nagios4_server_plugins
 
