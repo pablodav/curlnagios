@@ -1,2 +1,4 @@
+0.5.1
+  * fix on curl line, add --fail to fail on every HTTP response that is non OK
 0.1
   * first version

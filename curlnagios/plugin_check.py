@@ -34,7 +34,7 @@ class curlCheck:
         """
         ### some code here
         ### or calling external modules
-        cmdline = "curl {} -s -o /dev/null {} -w \\ {}".format(self.url, self.extra_args, self.std_args)
+        cmdline = "curl {} --fail -s -o /dev/null {} -w \\ {}".format(self.url, self.extra_args, self.std_args)
 
         retrcode, retroutput = subprocess.getstatusoutput(cmdline)
         jsonoutput = json.loads(retroutput)
