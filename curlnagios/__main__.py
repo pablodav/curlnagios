@@ -40,7 +40,7 @@ def parse_args(args):
 
     parser.add_argument('-u', '--url', dest='url', nargs='?', default=None, const=None,
                         help='url to check \n')
-    parser.add_argument('-e', '--extra_args', dest='extra_args', nargs='?', default=None, const=None,
+    parser.add_argument('-e', '--extra_args', dest='extra_args', nargs='?', default='', const=None,
                             help='extra args to add to curl, see curl manpage  \n')
     
     # Arguments to check using OAuth2
