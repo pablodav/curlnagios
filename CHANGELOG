@@ -1,3 +1,5 @@
+0.6.0
+  * Add oauth2 to authenticate with azure oauth2
 0.5.1
   * fix on curl line, add --fail to fail on every HTTP response that is non OK
 0.1
