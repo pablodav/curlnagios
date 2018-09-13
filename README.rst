@@ -56,6 +56,20 @@ All the extra_args are options directly comming from curl manpage, you can use a
 with exception of -s, -o, -w as these are
 implicit added on the curl command line argument to format the output for this plugin.
 
+Example usage with AzureAD oauth2
+=================================
+
+When creating authentication with AzureAD oauth2, you need to create a client Application and Azure AD only applications:
+
+https://apps.dev.microsoft.com/#/appList
+
+Then use:
+
+    > curlnagios --url 'https://{yoururltotest}/api/path' --client_id 'unique-client-id' --scope 'https://{tenant}/unique-id-here-for-the-app/.default' --client_secret 'theclientoken' --grant_type 'client_credentials' --auth_url 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token' --oauth2
+
+Change {tenant} with your identifier and the unique id for client and for application.
+Add your client secret
+
 Nagios config
 =============
 
@@ -66,6 +80,10 @@ Example command::
         command_line  /usr/local/bin/curlnagios --url='$ARG1$' --extra_args='$ARG2$'
     }
 
+    define command{
+        command_name  check_http_curl_azuread
+        command_line  /usr/local/bin/curlnagios --url='$ARG1$' --client_id '$ARG2$' --scope '$ARG3$' --client_secret '$ARG4$' --auth_url 'https://login.microsoftonline.com/$ARG5$/oauth2/v2.0/token' --oauth2 --extra_args='$ARG6$'
+    }
 
 Example service::
 
@@ -88,6 +106,16 @@ Example service bypassing reverse proxy and dns and proxy server::
     }
 
      ## In this way you can connect to some backend and pass with -H the host header to get and also ensure no proxy used to connect to url.
+
+Example using azuread oauth2::
+
+    define service {
+            host_name                       SERVERY
+            service_description             fqdn.backend1
+            check_command                   check_http_curl_azuread!http://fqdn.site.name/api/xx!client-unique-id!https://{tenant}/unique-id-here-for-the-app/.default!client-secret-unique!tenant!some extra args if desired
+            use				                generic-service
+            notes                           Monitoring backend1 de of site fqdn.site.name
+    }
 
 You can use ansible role that already has the installation and command: https://github.com/CoffeeITWorks/ansible_nagios4_server_plugins
 
