@@ -70,6 +70,8 @@ Then use:
 Change {tenant} with your identifier and the unique id for client and for application.
 Add your client secret
 
+This comes from documentation using token: https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-access-token
+
 Nagios config
 =============
 
